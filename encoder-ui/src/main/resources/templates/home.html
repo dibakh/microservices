@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Encoder</title>
+</head>
+<body>
+
+<h1>Encoder</h1>
+
+<form method="post" th:action="@{/}" th:object="${message}">
+    <label>Plaintext:</label><br/><br/>
+    <input th:field="*{plaintext}" type="text"/><br/><br/>
+    <p th:errors="*{plaintext}" th:if="${#fields.hasErrors('plaintext')}">Incorrect input</p>
+    <button type="submit">Encode</button>
+</form>
+
+<th:block th:if="${not #strings.isEmpty(plaintext)}">
+    <h3>Plaintext: <span th:text="${plaintext}">plaintext</span></h3>
+</th:block>
+
+<th:block th:if="${not #strings.isEmpty(ciphertext)}">
+    <h3>Ciphertext: <span th:text="${ciphertext}">ciphertext</span></h3>
+</th:block>
+
+</body>
+</html>
